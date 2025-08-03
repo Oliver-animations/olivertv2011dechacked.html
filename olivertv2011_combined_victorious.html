@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>olivertv.com - The Best Shows!</title>
+    <!-- We are using TailwindCSS for basic utilities, but most styling is custom for the 2011 Frutiger Aero look -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /*
+        * CSS for a heavily Frutiger Aero and classic 2011 website.
+        * This version features more complex gradients, glossy textures, and
+        * more detailed shadows to create a vibrant, nostalgic feel.
+        */
+
+        body {
+            font-family: 'Segoe UI', 'Calibri', 'Helvetica Neue', Arial, sans-serif;
+            background: #e6e6e6; /* A lighter base */
+            background-image: radial-gradient(circle, #f5f5f5 5%, transparent 5%), radial-gradient(circle, #d0d0d0 5%, transparent 5%);
+            background-size: 200px 200px;
+            background-position: 0 0, 100px 100px;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px; /* Slightly wider for more content */
+            margin-top: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.5);
+            border-radius: 25px;
+            overflow: hidden;
+            background-color: #f1f1f1;
+            border: 2px solid #b0b0b0;
+        }
+
+        /* --- Header Styling --- */
+        .header {
+            background: linear-gradient(to bottom, #ffffff, #e0e0e0);
+            padding: 25px 40px;
+            text-align: center;
+            border-bottom: 1px solid #c0c0c0;
+            position: relative;
+            box-shadow: inset 0 -4px 8px rgba(0, 0, 0, 0.1), 0 3px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 23px 23px 0 0;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            color: #222;
+            margin: 0;
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 15px rgba(0, 0, 0, 0.2);
+            letter-spacing: -1px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #555;
+            margin: 5px 0 0;
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* --- Navigation Styling (Glassy Frutiger Aero buttons) --- */
+        .navigation {
+            display: flex;
+            justify-content: center;
+            background: linear-gradient(to bottom, #dcdcdc, #c0c0c0);
+            padding: 12px 0;
+            border-bottom: 1px solid #a0a0a0;
+            box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.1), inset 0 2px 5px rgba(255, 255, 255, 0.3);
+        }
+
+        .navigation a {
+            color: #333;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 12px 30px;
+            margin: 0 8px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), inset 0 0 8px rgba(255, 255, 255, 0.5);
+            background: linear-gradient(to bottom, #ffffff, #e6e6e6);
+            border: 1px solid #b0b0b0;
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+        }
+
+        .navigation a:hover {
+            background: linear-gradient(to bottom, #e6e6e6, #ffffff);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.7);
+            transform: translateY(-3px);
+            border-color: #909090;
+        }
+
+        /* --- Main Content and Sidebar --- */
+        .main-content {
+            display: flex;
+            padding: 30px;
+            gap: 25px;
+        }
+
+        .content-area {
+            flex: 3;
+        }
+
+        .sidebar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .content-box {
+            background: #fdfdfd;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.15);
+            border: 1px solid #ccc;
+        }
+
+        .content-box h2 {
+            font-size: 1.8rem;
+            color: #444;
+            margin-top: 0;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 12px;
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+        }
+
+        /* --- Featured Content Container --- */
+        .featured-content {
+            background: linear-gradient(to bottom, #d6eaff, #a3c4f3);
+            border: 2px solid #89b1e0;
+            border-radius: 18px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), inset 0 0 15px rgba(255, 255, 255, 0.5);
+            text-align: center;
+        }
+
+        .featured-content h2 {
+            color: #004d99;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .featured-movie-image {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+            border: 2px solid #fff;
+        }
+
+        .featured-content a.watch-button {
+            display: inline-block;
+            background: linear-gradient(to bottom, #98e649, #6aa83d);
+            border: 1px solid #5a943a;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .featured-content a.watch-button:hover {
+            background: linear-gradient(to bottom, #6aa83d, #98e649);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* --- TV Show Cards --- */
+        .show-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .show-card {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 15px;
+            border-radius: 12px;
+            background: linear-gradient(to bottom, #fefefe, #e8e8e8);
+            border: 1px solid #d0d0d0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .show-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .show-card-image {
+            width: 100%;
+            height: 150px;
+            background-color: #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            border: 1px solid #b0b0b0;
+            overflow: hidden;
+        }
+
+        .show-card-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .show-card-content h3 {
+            font-size: 1.2rem;
+            color: #333;
+            margin: 0 0 5px 0;
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+        }
+
+        .show-card-content p {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+        
+        .show-card-content a {
+            color: #0077c7; /* A classic blue link color */
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .show-card-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Footer Styling --- */
+        .footer {
+            background: linear-gradient(to top, #c0c0c0, #dcdcdc);
+            padding: 25px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #a0a0a0;
+            box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 23px 23px;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                max-width: 95%;
+            }
+            .main-content {
+                flex-direction: column;
+            }
+            .navigation {
+                flex-wrap: wrap;
+            }
+            .navigation a {
+                margin-bottom: 10px;
+            }
+            .show-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- HEADER -->
+        <header class="header">
+            <h1>olivertv.com</h1>
+            <p>Welcome to our December 2011 Holiday Update!</p>
+        </header>
+
+        <!-- NAVIGATION -->
+        <nav class="navigation">
+            <a href="#">Home</a>
+            <a href="#">TV Shows</a>
+            <a href="#">Movies</a>
+            <a href="#">Holiday Specials</a>
+        </nav>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-content">
+            <!-- CONTENT AREA -->
+            <section class="content-area">
+                <!-- FEATURED CHRISTMAS MOVIE -->
+                <div class="featured-content">
+                    <h2>🎄 A Very Oliver Christmas! 🎄</h2>
+                    <div class="featured-movie-image">
+                        <img src="https://placehold.co/400x250/990000/ffffff?text=Holiday+Movie" alt="Featured Holiday Movie">
+                    </div>
+                    <p>This December, we're featuring the timeless classic "A Christmas Carol!" Join Ebenezer Scrooge on his ghostly journey to discover the true meaning of Christmas. Now streaming in glorious high definition!</p>
+                    <a href="#" class="watch-button">Watch Now</a>
+                </div>
+
+                <!-- LATEST SHOWS -->
+                <div class="content-box">
+                    <h2>Fresh for December!</h2>
+                    <div class="show-cards">
+                        <!-- Card for Amazing World of Gumball -->
+<!-- Card for Victorious -->
+<div class="show-card" style="background: linear-gradient(to bottom, #f3d1ff, #d6a6f0);">
+    <div class="show-card-image">
+        <img src="https://placehold.co/300x150/800080/ffffff?text=Victorious" alt="Victorious">
+    </div>
+    <div class="show-card-content">
+        <h3>Victorious</h3>
+        <p>Tori Vega hits the stage! But not this time... click and see what happens.</p>
+        <a href="#" class="watch-button" onclick="simulateHack()">Watch Now &gt;</a>
+    </div>
+</div>
+
+                        <div class="show-card">
+                            <div class="show-card-image">
+                                <img src="https://placehold.co/300x150/0077c7/ffffff?text=Gumball" alt="The Amazing World of Gumball">
+                            </div>
+                            <div class="show-card-content">
+                                <h3>The Amazing World of Gumball</h3>
+                                <p>From Ben's newest animation studio, join Gumball and Darwin on their wild adventures in the town of Elmore!</p>
+                                <a href="#">Watch Now &gt;</a>
+                            </div>
+                        </div>
+
+                        <!-- Card for Adventure Time -->
+                        <div class="show-card">
+                            <div class="show-card-image">
+                                <img src="https://placehold.co/300x150/ffb800/000000?text=Adventure+Time" alt="Adventure Time">
+                            </div>
+                            <div class="show-card-content">
+                                <h3>Adventure Time</h3>
+                                <p>Grab your friends and go to very distant lands! Finn the Human and Jake the Dog are ready for adventure in the Land of Ooo!</p>
+                                <a href="#">Watch Now &gt;</a>
+                            </div>
+                        </div>
+
+                        <!-- Card for SpongeBob SquarePants -->
+                        <div class="show-card">
+                            <div class="show-card-image">
+                                <img src="https://placehold.co/300x150/fec72c/0077c7?text=SpongeBob" alt="SpongeBob SquarePants">
+                            </div>
+                            <div class="show-card-content">
+                                <h3>SpongeBob SquarePants</h3>
+                                <p>Dive under the sea to Bikini Bottom for endless fun with SpongeBob, Patrick, and all your favorite nautical pals!</p>
+                                <a href="#">Watch Now &gt;</a>
+                            </div>
+                        </div>
+
+                        <!-- Card for Phineas and Ferb -->
+                        <div class="show-card">
+                            <div class="show-card-image">
+                                <img src="https://placehold.co/300x150/7092be/ffffff?text=Phineas+and+Ferb" alt="Phineas and Ferb">
+                            </div>
+                            <div class="show-card-content">
+                                <h3>Phineas and Ferb</h3>
+                                <p>What'cha doin'? Join the two stepbrothers as they make every summer day count with their incredible inventions!</p>
+                                <a href="#">Watch Now &gt;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+                <div class="content-box">
+                    <h2>Top of the Charts</h2>
+                    <ul>
+                        <li><a href="#">The Amazing World of Gumball</a></li>
+                        <li><a href="#">SpongeBob SquarePants</a></li>
+                        <li><a href="#">Victorious</a></li>
+                        <li><a href="#">Adventure Time</a></li>
+                        <li><a href="#">Naked & Afraid</a></li>
+                    </ul>
+                </div>
+                <div class="content-box">
+                    <h2>About Us</h2>
+                    <p>olivertv.com is a new streaming platform launched in 2011, bringing you the latest and greatest in entertainment. We are dedicated to providing a high-quality streaming experience for all ages!</p>
+                </div>
+            </aside>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>&copy; 2011 olivertv.com. All rights reserved. Beta Version.</p>
+        </footer>
+    </div>
+
+
+<script>
+  function simulateHack() {
+    alert("Error: PLAYBACK_NOT_SUPPORTED");
+
+    setTimeout(() => {
+      document.body.innerHTML = '';
+      document.body.style.backgroundColor = "black";
+
+      setTimeout(() => {
+        document.body.style.backgroundColor = "#fff";
+        document.body.innerHTML = `
+          <div style="font-family:Courier, monospace; color:red; padding:50px; text-align:center;">
+            <h1 style="font-size: 48px;">HTTP ERROR 527</h1>
+            <p style="font-size: 24px;">SYSTEM CORRUPTED BY TROJAN.VICTOR</p>
+            <hr style="margin: 40px auto; width: 50%;">
+            <p style="color: #333;">The server encountered a critical exception and could not continue to serve your request.</p>
+            <p>Try again later, or contact your sysadmin (good luck).</p>
+            <code>ERROR CODE: 0xD3AD-7R0J4N</code>
+          </div>
+        `;
+      }, 3000);
+    }, 8000);
+  }
+</script>
+
+</body>
+</html>
